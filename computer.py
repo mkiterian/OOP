@@ -49,3 +49,24 @@ class Laptop(Computer):
 
     def install_drivers(self):
         return 'Drivers are being installed'
+
+class CellPhone():    
+    def __init__(self, brand, model, sim_type):
+        self.brand = brand
+        self.model = model
+        self.sim_type = sim_type
+        self.contacts = {}
+
+    def add_contact(self, name, number):
+        self.name = name
+        self.number = number
+        self.contacts[self.name] = self.number
+
+    def call(self, name):
+        if name in self.contacts.keys():
+            return 'Calling {}'.format(name)
+
+class SmartPhone(Computer, CellPhone):
+    def __init__(self, brand, memory_size, storage_size, os_type, model, sim_type):
+        Computer.__init__(self, brand, memory_size, storage_size, os_type)
+        CellPhone.__init__(self, brand, model, sim_type)
